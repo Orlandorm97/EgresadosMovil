@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AppEgresados</string>
+    <string name="api_server">http://10.0.2.2:8000/api</string>
+
+</resources>
