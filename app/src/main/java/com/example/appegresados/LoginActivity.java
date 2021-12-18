@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                                 JSONObject response = new JSONObject(http.getResponse());
                                 String token = response.getString("token");
                                 localStorage.setToken(token);
-                                Intent intent = new Intent(LoginActivity.this,UserActivity.class);
+                                Intent intent = new Intent(LoginActivity.this,DrawerNav.class);
                                 startActivity(intent);
                                 finish();
                             }catch (JSONException e){
@@ -127,8 +127,6 @@ public class LoginActivity extends AppCompatActivity {
         }).start();
 
     }
-
-
 
 
     private void alertFail(String s) {
