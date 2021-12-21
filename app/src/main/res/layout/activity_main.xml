@@ -12,12 +12,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
-        android:textSize="16dp"
-        android:textStyle="bold"/>
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="30dp"/>
 
     <ImageView
-        android:src="@drawable/icon"
+        android:src="@drawable/graduado"
         android:layout_width="100dp"
         android:layout_height="100dp" />
+
+    <!--
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/graduate"
+        />
+    -->
 
 </LinearLayout>

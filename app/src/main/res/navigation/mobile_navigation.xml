@@ -12,14 +12,20 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_datospro"
         android:name="com.example.appegresados.ui.DatosPer.DatosPerFragment"
         android:label="@string/menu_datosper"
-        tools:layout="@layout/fragment_DatosPer" />
+        tools:layout="@layout/fragment_datosper" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_trayaca"
         android:name="com.example.appegresados.ui.TrayectoriaAca.TrayectoriaAcaFragment"
         android:label="@string/menu_trayectoriaaca"
-        tools:layout="@layout/fragment_TrayectoriaAca" />
+        tools:layout="@layout/fragment_trayectoriaaca" />
+
+    <fragment
+        android:id="@+id/nav_traypro"
+        android:name="com.example.appegresados.ui.TrayectoriaPro.TrayectoriaProFragment"
+        android:label="@string/menu_trayectoriapro"
+        tools:layout="@layout/fragment_trayectoriapro" />
 </navigation>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppEgresados</string>
+    <string name="app_name">Gestión de Egresados</string>
     <string name="api_server">http://10.0.2.2:8000/api</string>
     <string name="title_activity_drawer_nav">DrawerNav</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -12,6 +12,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_datosper">Datos Personales</string>
     <string name="menu_trayectoriaaca">Trayectoria Académica</string>
+    <string name="menu_trayectoriapro">Trayectoria Profesional</string>
     <string name="salir">Salir</string>
 
 

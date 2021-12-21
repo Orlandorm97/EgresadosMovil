@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -29,6 +30,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.lang.reflect.Array;
 
 public class TrayectoriaAcaFragment extends Fragment {
     TextView perfilGrado, perfilFechaI, perfilFechaF, maestriaCarrera, maestriaGrado, maestriaInstitucion, maestriaPais, maestriaFechaI, maestriaFechaF, doctoradoCarrera, doctoradoGrado, doctoradoInstitucion, doctoradoPais, doctoradoFechaI, doctoradoFechaF;
@@ -40,19 +42,7 @@ public class TrayectoriaAcaFragment extends Fragment {
         perfilGrado = (TextView) v.findViewById(R.id.perfilGrado);
         perfilFechaI = (TextView) v.findViewById(R.id.perfilFechaI);
         perfilFechaF = (TextView) v.findViewById(R.id.perfilFechaF);
-        /*maestriaCarrera = (TextView) v.findViewById(R.id.maestriaCarrera);
-        maestriaGrado = (TextView) v.findViewById(R.id.maestriaGrado);
-        maestriaInstitucion = (TextView) v.findViewById(R.id.maestriaInstitucion);
-        maestriaPais = (TextView) v.findViewById(R.id.maestriaPais);
-        maestriaFechaI = (TextView) v.findViewById(R.id.maestriaFechaI);
-        maestriaFechaF = (TextView) v.findViewById(R.id.maestriaFechaF);
-        doctoradoCarrera = (TextView) v.findViewById(R.id.doctoradoCarrera);
-        doctoradoGrado = (TextView) v.findViewById(R.id.doctoradoGrado);
-        doctoradoInstitucion = (TextView) v.findViewById(R.id.doctoradoInstitucion);
-        doctoradoPais = (TextView) v.findViewById(R.id.doctoradoPais);
-        doctoradoFechaI = (TextView) v.findViewById(R.id.doctoradoFechaI);
-        doctoradoFechaF = (TextView) v.findViewById(R.id.doctoradoFechaF);
-        */
+
         getTrayectoriaAca();
 
         return v;
@@ -100,12 +90,14 @@ public class TrayectoriaAcaFragment extends Fragment {
                                 LinearLayout linearLayoutM = (LinearLayout) getActivity().findViewById(R.id.linearlayout2);
 
                                 LinearLayout.LayoutParams lLparams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1);
+                                //linearLayoutM.setBackgroundColor(Color.parseColor("#0000ff"));
 
                                 LinearLayout.LayoutParams fechafParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1);
                                 fechafParams.setMargins(0,0,0,40);
 
 
                                 Drawable line = getResources().getDrawable(R.drawable.custom_line);
+                                Drawable borde = getResources().getDrawable(R.drawable.custom_border);
                                 /*
                                 TextView
                                 <TextView
@@ -127,9 +119,16 @@ public class TrayectoriaAcaFragment extends Fragment {
                                     android:layout_weight="1"/>
                                  */
 
+
+                                int[] lL = new int[countMa];
                                 for( int i = 0; i < countMa; i++)
                                 {
                                     JSONObject responseM = new JSONObject(responseArr2.getString(i));
+
+                                    LinearLayout lLAll = new LinearLayout(getContext());
+                                    lLAll.setOrientation(LinearLayout.VERTICAL);
+                                    lLAll.setBackground(borde);
+                                    lLAll.setLayoutParams(lLparams);
 
                                     LinearLayout lL1 = new LinearLayout(getContext());
                                     lL1.setOrientation(LinearLayout.HORIZONTAL);
@@ -153,15 +152,8 @@ public class TrayectoriaAcaFragment extends Fragment {
 
                                     LinearLayout lL6 = new LinearLayout(getContext());
                                     lL6.setOrientation(LinearLayout.HORIZONTAL);
-                                    //lL6.setBackground(line);
                                     lL6.setLayoutParams(fechafParams);
 
-                                    linearLayoutM.addView(lL1);
-                                    linearLayoutM.addView(lL2);
-                                    linearLayoutM.addView(lL3);
-                                    linearLayoutM.addView(lL4);
-                                    linearLayoutM.addView(lL5);
-                                    linearLayoutM.addView(lL6);
 
                                     LinearLayout.LayoutParams tvParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
                                     tvParams.setMargins(40,0,0,0);
@@ -250,6 +242,14 @@ public class TrayectoriaAcaFragment extends Fragment {
                                     lL5.addView(tvFechai2);
                                     lL6.addView(tvFechaf2);
 
+                                    lLAll.addView(lL1);
+                                    lLAll.addView(lL2);
+                                    lLAll.addView(lL3);
+                                    lLAll.addView(lL4);
+                                    lLAll.addView(lL5);
+                                    lLAll.addView(lL6);
+
+                                    linearLayoutM.addView(lLAll);
                                 }
 
 
@@ -258,6 +258,11 @@ public class TrayectoriaAcaFragment extends Fragment {
                                 for( int i = 0; i < countDo; i++)
                                 {
                                     JSONObject responseM = new JSONObject(responseArr3.getString(i));
+
+                                    LinearLayout lLAll = new LinearLayout(getContext());
+                                    lLAll.setOrientation(LinearLayout.VERTICAL);
+                                    lLAll.setBackground(borde);
+                                    lLAll.setLayoutParams(lLparams);
 
                                     LinearLayout lL1 = new LinearLayout(getContext());
                                     lL1.setOrientation(LinearLayout.HORIZONTAL);
@@ -283,12 +288,6 @@ public class TrayectoriaAcaFragment extends Fragment {
                                     lL6.setOrientation(LinearLayout.HORIZONTAL);
                                     lL6.setLayoutParams(fechafParams);
 
-                                    linearLayoutD.addView(lL1);
-                                    linearLayoutD.addView(lL2);
-                                    linearLayoutD.addView(lL3);
-                                    linearLayoutD.addView(lL4);
-                                    linearLayoutD.addView(lL5);
-                                    linearLayoutD.addView(lL6);
 
                                     LinearLayout.LayoutParams tvParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
                                     tvParams.setMargins(40,0,0,0);
@@ -376,6 +375,15 @@ public class TrayectoriaAcaFragment extends Fragment {
                                     lL4.addView(tvPais2);
                                     lL5.addView(tvFechai2);
                                     lL6.addView(tvFechaf2);
+
+                                    lLAll.addView(lL1);
+                                    lLAll.addView(lL2);
+                                    lLAll.addView(lL3);
+                                    lLAll.addView(lL4);
+                                    lLAll.addView(lL5);
+                                    lLAll.addView(lL6);
+
+                                    linearLayoutD.addView(lLAll);
 
                                 }
 

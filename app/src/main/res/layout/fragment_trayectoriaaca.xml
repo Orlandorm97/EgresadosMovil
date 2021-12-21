@@ -18,8 +18,8 @@
         android:text="PERFIL DEL EGRESADO"
         android:textSize="20dp"
         android:textColor="@color/black"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="20dp"
+        android:textAlignment="center"
+        android:layout_gravity="center"
         android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -29,12 +29,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:layout_marginLeft="5dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+
             android:orientation="horizontal">
 
             <TextView

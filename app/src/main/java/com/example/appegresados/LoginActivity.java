@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         matricula = etMatricula.getText().toString();
         password = etPassword.getText().toString();
         if (matricula.isEmpty() || password.isEmpty()) {
-            alertFail("Matricula and Password is required.");
+            alertFail("Debe ingresar el código de matrícula y contraseña.");
         }
         else{
             sendLogin();

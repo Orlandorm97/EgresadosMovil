@@ -9,13 +9,17 @@
             android:icon="@drawable/casa"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_datospro"
             android:icon="@drawable/sombrero"
             android:title="@string/menu_datosper" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_trayaca"
             android:icon="@drawable/archivo"
             android:title="@string/menu_trayectoriaaca" />
+        <item
+            android:id="@+id/nav_traypro"
+            android:icon="@drawable/trayectoria_profesional"
+            android:title="@string/menu_trayectoriapro" />
         <item
             android:id="@+id/nav_salir"
             android:icon="@drawable/ic_salir"
