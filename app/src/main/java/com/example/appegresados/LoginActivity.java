@@ -16,9 +16,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
-    EditText etMatricula, etPassword;
+    EditText etDni, etPassword;
     Button btnLogin, btnRegister;
-    String matricula, password;
+    String dni, password;
     LocalStorage localStorage;
 
     @Override
@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
 
         localStorage = new LocalStorage(com.example.appegresados.LoginActivity.this);
 
-        etMatricula = findViewById(R.id.etMatricula);
+        etDni = findViewById(R.id.etDni);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
         btnRegister = findViewById(R.id.btnRegister);
@@ -51,9 +51,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void checkLogin() {
-        matricula = etMatricula.getText().toString();
+        dni = etDni.getText().toString();
         password = etPassword.getText().toString();
-        if (matricula.isEmpty() || password.isEmpty()) {
+        if (dni.isEmpty() || password.isEmpty()) {
             alertFail("Debe ingresar el código de matrícula y contraseña.");
         }
         else{
@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
     private void sendLogin() {
         JSONObject params = new JSONObject();
         try {
-            params.put("egresado_matricula", matricula);
+            params.put("dni", dni);
             params.put("password", password);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -94,6 +94,11 @@ public class LoginActivity extends AppCompatActivity {
                                 String token = response.getString("token");
                                 localStorage.setToken(token);
                                 Intent intent = new Intent(LoginActivity.this,DrawerNav.class);
+                                Bundle bundle = new Bundle();
+                                //Add your data to bundle
+                                bundle.putString("token", token);
+                                //Add the bundle to the intent
+                                intent.putExtras(bundle);
                                 startActivity(intent);
                                 finish();
                             }catch (JSONException e){

@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/graduado" />
 
     <EditText
-        android:id="@+id/etMatricula"
+        android:id="@+id/etDni"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Matrícula de egresado"

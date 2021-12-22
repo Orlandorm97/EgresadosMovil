@@ -2,6 +2,7 @@ package com.example.appegresados;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
@@ -13,6 +14,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -31,14 +33,21 @@ public class DrawerNav extends AppCompatActivity {
         setContentView(R.layout.activity_drawer_nav);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
+        Bundle bundle = getIntent().getExtras();
+
+            //Extract the data…
+        String token = bundle.getString("token");
+
+
+        Log.d("token de la activity", "***"+ token);
+
+        bundle.putString("token", token);
+
+        Bundle bundleToFrag = new Bundle();
+        bundle.putString("token", token);
+        Fragment fragment = new Fragment();
+        fragment.setArguments(bundle);
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -48,7 +57,7 @@ public class DrawerNav extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_datospro, R.id.nav_trayaca, R.id.nav_traypro
+                R.id.nav_home, R.id.nav_datospro, R.id.nav_trayaca, R.id.nav_traypro, R.id.nav_editdp
         )
                 .setDrawerLayout(drawer)
                 .build();
@@ -73,6 +82,7 @@ public class DrawerNav extends AppCompatActivity {
             }
         });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

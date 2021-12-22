@@ -14,6 +14,8 @@
     <string name="menu_trayectoriaaca">Trayectoria Académica</string>
     <string name="menu_trayectoriapro">Trayectoria Profesional</string>
     <string name="salir">Salir</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

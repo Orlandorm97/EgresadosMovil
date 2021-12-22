@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.DatosPer.DatosPerFragment"
-        tools:ignore="MissingDefaultResource"
-        android:orientation="vertical"
-        android:padding="20dp">
+        tools:context=".ui.DatosPer.DatosPerEditFragment"
+        android:orientation="vertical">
+
+        <!-- TODO: Update blank fragment layout -->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp">
+
             <TextView
-                android:text="PERFIL DEL EGRESADO"
+                android:text="EDITAR PERFIL DEL EGRESADO"
                 android:textSize="20dp"
                 android:textColor="@color/black"
                 android:layout_marginBottom="20dp"
@@ -31,34 +32,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-            <TextView
-                android:text="DATOS PERSONALES"
-                android:textSize="20dp"
-                android:textColor="@color/black"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="15dp"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/graduado"
-                android:layout_gravity="center"
-                android:layout_marginBottom="20dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
@@ -67,17 +43,18 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginLeft="15dp"
-                    android:text="NOMBRES "
+                    android:layout_gravity="center_vertical"
+                    android:text="APELLIDO PATERNO "
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tvName"
+                <EditText
+                    android:id="@+id/etApPaterno"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
                     android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
                     android:textColor="@color/black" />
 
             </LinearLayout>
@@ -86,26 +63,83 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:text="APELLIDO MATERNO "
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etApMaterno"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:text="NOMBRE "
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:text="GÉNERO: "
                     android:textColor="@color/black"
                     android:layout_marginLeft="15dp"
+                    android:layout_gravity="center_vertical"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tvGenero"
+                <Spinner
+                    android:id="@+id/spinnerGenero"
+                    android:autofillHints="Género"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="10dp"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="30dp"
                     android:layout_weight="1"
-                    android:gravity="left"
-                    android:layout_marginLeft="20dp"
-                    android:textColor="@color/black" />
+                    android:background="@android:drawable/btn_dropdown"
+                    android:spinnerMode="dropdown"/>
             </LinearLayout>
 
             <LinearLayout
@@ -119,13 +153,14 @@
                     android:text="FECHA DE NACIMIENTO: "
                     android:textColor="@color/black"
                     android:layout_marginLeft="15dp"
+                    android:layout_gravity="center_vertical"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tvFecha"
+                <EditText
+                    android:id="@+id/etFecha"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -145,13 +180,14 @@
                     android:text="TELÉFONO: "
                     android:textColor="@color/black"
                     android:layout_marginLeft="15dp"
+                    android:layout_gravity="center_vertical"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tvTelefono"
+                <EditText
+                    android:id="@+id/etCelular"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -160,31 +196,7 @@
                     android:textColor="@color/black" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_marginBottom="15dp"
-                android:orientation="horizontal">
 
-                <TextView
-                    android:text="DNI: "
-                    android:textColor="@color/black"
-                    android:layout_marginLeft="15dp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvDni"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="left"
-                    android:layout_marginLeft="20dp"
-                    android:textColor="@color/black" />
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -202,8 +214,8 @@
                     android:layout_weight="1"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tvUrl"
+                <EditText
+                    android:id="@+id/etUrl"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -213,15 +225,37 @@
             </LinearLayout>
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btEdit_datosper"
-            android:layout_width="75dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:textStyle="bold"
-            android:textSize="10dp"
-            android:text="Editar"/>
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            >
+
+            <Button
+                android:id="@+id/bt_editar"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:textSize="11dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:text="Editar"
+                android:layout_marginRight="20dp"/>
+
+            <Button
+                android:id="@+id/bt_volver"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:textSize="11dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:text="Volver"
+                android:layout_marginLeft="20dp"/>
+
+
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

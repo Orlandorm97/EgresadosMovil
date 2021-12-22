@@ -6,168 +6,169 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.TrayectoriaAca.TrayectoriaAcaFragment"
-    tools:ignore="MissingDefaultResource"
-    android:orientation="vertical"
-    android:layout_marginTop="20dp">
-
-    <TextView
-        android:text="PERFIL DEL EGRESADO"
-        android:textSize="20dp"
-        android:textColor="@color/black"
-        android:textAlignment="center"
-        android:layout_gravity="center"
-        android:textStyle="bold"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <LinearLayout
-        android:id="@+id/linearlayout1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:layout_marginLeft="5dp"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="15dp"
-                android:text="CARRERA PROFESIONAL "
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:text="Ingeniería de sistemas"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:layout_marginLeft="20dp"
-                android:textColor="@color/black" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="15dp"
-                android:text="GRADO ACADÉMICO   "
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
-
-            <TextView
-                android:id="@+id/perfilGrado"
-                android:textColor="@color/black"
-                android:layout_marginLeft="20dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-            <TextView
-                android:text="FECHA DE INGRESO  "
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:layout_marginLeft="15dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-            <TextView
-                android:id="@+id/perfilFechaI"
-                android:textColor="@color/black"
-                android:layout_marginLeft="20dp"
-                android:gravity="left"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp">
-            <TextView
-                android:text="FECHA DE EGRESO   "
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:layout_marginLeft="15dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-            <TextView
-                android:id="@+id/perfilFechaF"
-                android:textColor="@color/black"
-                android:layout_marginLeft="20dp"
-                android:gravity="left"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-        <TextView
-            android:text="Trayectoria académica \n Maestrías"
-            android:textStyle="bold"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/black"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-    </LinearLayout>
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        tools:context=".ui.TrayectoriaAca.TrayectoriaAcaFragment"
+        tools:ignore="MissingDefaultResource"
         android:orientation="vertical"
-        android:id="@+id/linearlayout2">
-        <!-- android:background="@drawable/custom_border"   -->
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:text="PERFIL DEL EGRESADO"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:id="@+id/linearlayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="15dp"
+                    android:text="CARRERA PROFESIONAL "
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:text="Ingeniería de sistemas"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="15dp"
+                    android:text="GRADO ACADÉMICO   "
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/perfilGrado"
+                    android:textColor="@color/black"
+                    android:text=""
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <TextView
+                    android:text="FECHA DE INGRESO  "
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/perfilFechaI"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="left"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
+                <TextView
+                    android:text="FECHA DE EGRESO   "
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/perfilFechaF"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="left"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:text="Trayectoria académica \n Maestrías"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:id="@+id/linearlayout2">
+            <!-- android:background="@drawable/custom_border"   -->
 
 
 
 
 
-    </LinearLayout>
+        </LinearLayout>
 
         <TextView
             android:text="Doctorados    "
@@ -180,17 +181,16 @@
             android:layout_height="wrap_content"/>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:id="@+id/linearlayout3"
-        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:id="@+id/linearlayout3"
+            >
+
+        </LinearLayout>
 
 
     </LinearLayout>
-
-
-</LinearLayout>
 </ScrollView>

@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.appegresados.Http;
 import com.example.appegresados.R;
@@ -30,6 +32,8 @@ import java.io.File;
 public class DatosPerFragment extends Fragment {
     TextView tvName, tvGenero, tvFecha, tvTelefono, tvUrl, tvDni;
     ImageView IvPerfil;
+    Button btEdit_datosper;
+    String token;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -42,6 +46,34 @@ public class DatosPerFragment extends Fragment {
         tvUrl = (TextView) v.findViewById(R.id.tvUrl);
         tvDni = (TextView) v.findViewById(R.id.tvDni);
         getUser();
+
+        btEdit_datosper = (Button) v.findViewById(R.id.btEdit_datosper);
+
+
+        Fragment fragment = new Fragment();
+
+        Bundle bundle = getActivity().getIntent().getExtras();
+
+        token = bundle.getString("token");
+
+        bundle.putString("token", token);
+
+        fragment.setArguments(bundle);
+
+        //Log.d("token", "------"+ token);
+
+
+
+        btEdit_datosper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final FragmentTransaction fr = getFragmentManager().beginTransaction();
+                fr.replace(R.id.nav_host_fragment, fragment);
+                fr.replace(R.id.nav_host_fragment, new DatosPerEditFragment());
+                fr.commit();
+            }
+        });
+
 
        return v;
     }

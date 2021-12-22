@@ -72,7 +72,6 @@ public class Http{
                 // if success response
                 isr = new InputStreamReader(connection.getInputStream());
 
-
             } else {
                 // if error response
                 isr = new InputStreamReader(connection.getErrorStream());

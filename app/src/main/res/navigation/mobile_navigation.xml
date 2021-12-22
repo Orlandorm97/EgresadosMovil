@@ -28,4 +28,10 @@
         android:name="com.example.appegresados.ui.TrayectoriaPro.TrayectoriaProFragment"
         android:label="@string/menu_trayectoriapro"
         tools:layout="@layout/fragment_trayectoriapro" />
+
+    <fragment
+        android:id="@+id/nav_editdp"
+        android:name="com.example.appegresados.ui.DatosPer.DatosPerEditFragment"
+        android:label="@string/menu_trayectoriapro"
+        tools:layout="@layout/fragment_datos_per_edit" />
 </navigation>

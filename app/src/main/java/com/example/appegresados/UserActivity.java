@@ -66,6 +66,8 @@ public class UserActivity extends AppCompatActivity {
                                 JSONArray responseArray = new JSONArray(http.getResponse());
                                 JSONObject response= new JSONObject(responseArray.getString(0));
 
+
+
                                 String ap_paterno = capitalize(response.getString("ap_paterno"));
                                 String ap_materno = capitalize(response.getString("ap_materno"));
                                 String nombres = capitalize(response.getString("nombres"));
