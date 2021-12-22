@@ -48,7 +48,6 @@ public class TrayectoriaAcaFragment extends Fragment {
         return v;
     }
 
-
     private void getTrayectoriaAca() {
         String url = getString(R.string.api_server)+"/trayectoriaaca";
         new Thread(new Runnable() {
@@ -80,45 +79,15 @@ public class TrayectoriaAcaFragment extends Fragment {
                                 //Log.d("response", "***"+ responseDo);
                                 Log.d("response", "***"+ responseArr3.length());
 
-                                /*
-                                LinearLayout2
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"
-                                android:orientation="horizontal">*/
-
                                 LinearLayout linearLayoutM = (LinearLayout) getActivity().findViewById(R.id.linearlayout2);
 
                                 LinearLayout.LayoutParams lLparams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1);
-                                //linearLayoutM.setBackgroundColor(Color.parseColor("#0000ff"));
 
                                 LinearLayout.LayoutParams fechafParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1);
                                 fechafParams.setMargins(0,0,0,40);
 
-
                                 Drawable line = getResources().getDrawable(R.drawable.custom_line);
                                 Drawable borde = getResources().getDrawable(R.drawable.custom_border);
-                                /*
-                                TextView
-                                <TextView
-                                    android:text="CARRERA PROFESIONAL   "
-                                    android:textStyle="bold"
-                                    android:textColor="@color/black"
-                                    android:layout_marginLeft="20dp"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"/>
-
-                                <TextView
-                                    android:id="@+id/doctoradoCarrera"
-                                    android:gravity="left"
-                                    android:textColor="@color/black"
-                                    android:layout_marginLeft="20dp"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"/>
-                                 */
-
 
                                 int[] lL = new int[countMa];
                                 for( int i = 0; i < countMa; i++)
@@ -220,7 +189,7 @@ public class TrayectoriaAcaFragment extends Fragment {
                                     tvFechaf2.setTextColor(Color.parseColor("#000000"));
                                     tvFechaf2.setLayoutParams(tvParams);
 
-
+                                    String id_maestria = responseM.getString("id_maestria");
                                     tvCarr2.setText(responseM.getString("carr_profesional"));
                                     tvGrado2.setText(responseM.getString("maestria_grado_academico"));
                                     tvInst2.setText(responseM.getString("maestria_institución"));
@@ -249,6 +218,15 @@ public class TrayectoriaAcaFragment extends Fragment {
                                     lLAll.addView(lL5);
                                     lLAll.addView(lL6);
 
+                                    lLAll.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            // ADD your action here
+
+                                            Toast.makeText(getContext(), "Id_Maestria  "+ id_maestria, Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+
                                     linearLayoutM.addView(lLAll);
                                 }
 
@@ -260,8 +238,10 @@ public class TrayectoriaAcaFragment extends Fragment {
                                     JSONObject responseM = new JSONObject(responseArr3.getString(i));
 
                                     LinearLayout lLAll = new LinearLayout(getContext());
+                                    lLAll.setId(i);
                                     lLAll.setOrientation(LinearLayout.VERTICAL);
                                     lLAll.setBackground(borde);
+                                    lLAll.isClickable();
                                     lLAll.setLayoutParams(lLparams);
 
                                     LinearLayout lL1 = new LinearLayout(getContext());
@@ -354,7 +334,7 @@ public class TrayectoriaAcaFragment extends Fragment {
                                     tvFechaf2.setTextColor(Color.parseColor("#000000"));
                                     tvFechaf2.setLayoutParams(tvParams);
 
-
+                                    String id_doctorado = responseM.getString("id_doctorado");
                                     tvCarr2.setText(responseM.getString("carr_profesional"));
                                     tvGrado2.setText(responseM.getString("doctorado_grado_academico"));
                                     tvInst2.setText(responseM.getString("doctorado_institución"));
@@ -383,6 +363,15 @@ public class TrayectoriaAcaFragment extends Fragment {
                                     lLAll.addView(lL5);
                                     lLAll.addView(lL6);
 
+                                    lLAll.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            // ADD your action here
+
+                                            Toast.makeText(getContext(), "Id_Doctorado  "+ id_doctorado, Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+
                                     linearLayoutD.addView(lLAll);
 
                                 }
@@ -408,7 +397,5 @@ public class TrayectoriaAcaFragment extends Fragment {
             }
         }).start();
     }
-
-
 
 }
