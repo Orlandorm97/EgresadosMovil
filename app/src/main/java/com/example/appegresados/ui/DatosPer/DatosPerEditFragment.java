@@ -125,7 +125,7 @@ public class DatosPerEditFragment extends Fragment {
 
 
     public void getUser() {
-        String url = getString(R.string.api_server)+"/user";
+        String url = getString(R.string.api_server)+"/datospersonales";
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -140,19 +140,20 @@ public class DatosPerEditFragment extends Fragment {
                         Integer code = http.getStatusCode();
                         if(code == 200){
                             try {
-                                JSONArray responseArray = new JSONArray(http.getResponse());
-                                JSONObject response= new JSONObject(responseArray.getString(0));
+                                JSONObject response = new JSONObject(http.getResponse());
+                                JSONArray responseArr =  response.getJSONArray("egresados");
+                                JSONObject responseDP = new JSONObject(responseArr.getString(0));
 
 
                                 Log.d("RESPONSE GETUSER", "***"+ response);
 
-                                matricula = response.getString("matricula");
-                                ap_paterno = capitalize(response.getString("ap_paterno"));
-                                ap_materno = capitalize(response.getString("ap_materno"));
-                                nombres = capitalize(response.getString("nombres"));
-                                genero = capitalize(response.getString("genero"));
-                                fecha = response.getString("fecha_nacimiento");
-                                celular = response.getString("celular");
+                                matricula = responseDP.getString("matricula");
+                                ap_paterno = capitalize(responseDP.getString("ap_paterno"));
+                                ap_materno = capitalize(responseDP.getString("ap_materno"));
+                                nombres = capitalize(responseDP.getString("nombres"));
+                                genero = capitalize(responseDP.getString("genero"));
+                                fecha = responseDP.getString("fecha_nacimiento");
+                                celular = responseDP.getString("celular");
 
                                 nombre_completo = ap_paterno+ " "+ ap_materno+ ", "+ nombres;
 
@@ -218,7 +219,6 @@ public class DatosPerEditFragment extends Fragment {
                 Log.d("DATA UPDATE", "********"+ data);
                 Log.d("TOKEN", "********"+ token);
                 http.send();
-
 
                 mActivity.runOnUiThread(new Runnable() {
                     @Override

@@ -1,49 +1,67 @@
 package com.example.appegresados.ui.TrayectoriaAca;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.example.appegresados.DataCommunication;
 import com.example.appegresados.Http;
 import com.example.appegresados.R;
+import com.example.appegresados.ui.DatosPer.DatosPerEditFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.lang.reflect.Array;
-
 public class TrayectoriaAcaFragment extends Fragment {
-    TextView perfilGrado, perfilFechaI, perfilFechaF, maestriaCarrera, maestriaGrado, maestriaInstitucion, maestriaPais, maestriaFechaI, maestriaFechaF, doctoradoCarrera, doctoradoGrado, doctoradoInstitucion, doctoradoPais, doctoradoFechaI, doctoradoFechaF;
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mActivity = (Activity) context;
+    }
+    Activity mActivity;
 
+
+    DataCommunication mCallback;
+    TextView perfilCarrera,perfilGrado, perfilFechaI, perfilFechaF;
+    Button bt_agregar;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_trayectoriaaca, container, false);
 
+        perfilCarrera = (TextView) v.findViewById(R.id.perfilCarrera);
         perfilGrado = (TextView) v.findViewById(R.id.perfilGrado);
         perfilFechaI = (TextView) v.findViewById(R.id.perfilFechaI);
         perfilFechaF = (TextView) v.findViewById(R.id.perfilFechaF);
+        bt_agregar = (Button) v.findViewById(R.id.bt_agregar);
 
         getTrayectoriaAca();
+
+        bt_agregar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final FragmentTransaction fr = getFragmentManager().beginTransaction();
+                fr.replace(R.id.nav_host_fragment, new TrayectoriaAcaAddFragment());
+                fr.commit();
+            }
+        });
+
 
         return v;
     }
@@ -81,23 +99,22 @@ public class TrayectoriaAcaFragment extends Fragment {
 
                                 LinearLayout linearLayoutM = (LinearLayout) getActivity().findViewById(R.id.linearlayout2);
 
-                                LinearLayout.LayoutParams lLparams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1);
+                                LinearLayout.LayoutParams lLparams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
 
-                                LinearLayout.LayoutParams fechafParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1);
-                                fechafParams.setMargins(0,0,0,40);
-
-                                Drawable line = getResources().getDrawable(R.drawable.custom_line);
+                                                                Drawable line = getResources().getDrawable(R.drawable.custom_line);
                                 Drawable borde = getResources().getDrawable(R.drawable.custom_border);
 
                                 int[] lL = new int[countMa];
                                 for( int i = 0; i < countMa; i++)
                                 {
                                     JSONObject responseM = new JSONObject(responseArr2.getString(i));
+                                    LinearLayout.LayoutParams lLparamsAll = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1);
+                                    lLparamsAll.setMargins(0,0,0,20);
 
                                     LinearLayout lLAll = new LinearLayout(getContext());
                                     lLAll.setOrientation(LinearLayout.VERTICAL);
                                     lLAll.setBackground(borde);
-                                    lLAll.setLayoutParams(lLparams);
+                                    lLAll.setLayoutParams(lLparamsAll);
 
                                     LinearLayout lL1 = new LinearLayout(getContext());
                                     lL1.setOrientation(LinearLayout.HORIZONTAL);
@@ -121,7 +138,7 @@ public class TrayectoriaAcaFragment extends Fragment {
 
                                     LinearLayout lL6 = new LinearLayout(getContext());
                                     lL6.setOrientation(LinearLayout.HORIZONTAL);
-                                    lL6.setLayoutParams(fechafParams);
+                                    lL6.setLayoutParams(lLparams);
 
 
                                     LinearLayout.LayoutParams tvParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
@@ -222,27 +239,37 @@ public class TrayectoriaAcaFragment extends Fragment {
                                         @Override
                                         public void onClick(View v) {
                                             // ADD your action here
+                                            FragmentTransaction fr = getFragmentManager().beginTransaction();
+                                            fr.replace(R.id.nav_host_fragment, new TrayectoriaAcaEditMaestriaFragment());
+                                            fr.commit();
 
-                                            Toast.makeText(getContext(), "Id_Maestria  "+ id_maestria, Toast.LENGTH_SHORT).show();
+                                            try {
+                                                mCallback = (DataCommunication) mActivity;
+                                                mCallback.setMyVariableX(id_maestria);
+                                            } catch (ClassCastException e) {
+                                                throw new ClassCastException(mActivity.toString()
+                                                        + " must implement DataCommunication");
+                                            }
                                         }
                                     });
 
                                     linearLayoutM.addView(lLAll);
                                 }
 
-
                                 LinearLayout linearLayoutD = (LinearLayout) getActivity().findViewById(R.id.linearlayout3);
 
                                 for( int i = 0; i < countDo; i++)
                                 {
                                     JSONObject responseM = new JSONObject(responseArr3.getString(i));
+                                    LinearLayout.LayoutParams lLparamsAll = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1);
+                                    lLparamsAll.setMargins(0,0,0,20);
 
                                     LinearLayout lLAll = new LinearLayout(getContext());
                                     lLAll.setId(i);
                                     lLAll.setOrientation(LinearLayout.VERTICAL);
                                     lLAll.setBackground(borde);
                                     lLAll.isClickable();
-                                    lLAll.setLayoutParams(lLparams);
+                                    lLAll.setLayoutParams(lLparamsAll);
 
                                     LinearLayout lL1 = new LinearLayout(getContext());
                                     lL1.setOrientation(LinearLayout.HORIZONTAL);
@@ -266,8 +293,7 @@ public class TrayectoriaAcaFragment extends Fragment {
 
                                     LinearLayout lL6 = new LinearLayout(getContext());
                                     lL6.setOrientation(LinearLayout.HORIZONTAL);
-                                    lL6.setLayoutParams(fechafParams);
-
+                                    lL6.setLayoutParams(lLparams);
 
                                     LinearLayout.LayoutParams tvParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
                                     tvParams.setMargins(40,0,0,0);
@@ -367,8 +393,17 @@ public class TrayectoriaAcaFragment extends Fragment {
                                         @Override
                                         public void onClick(View v) {
                                             // ADD your action here
+                                            FragmentTransaction fr = getFragmentManager().beginTransaction();
+                                            fr.replace(R.id.nav_host_fragment, new TrayectoriaAcaEditDoctoradoFragment());
+                                            fr.commit();
 
-                                            Toast.makeText(getContext(), "Id_Doctorado  "+ id_doctorado, Toast.LENGTH_SHORT).show();
+                                            try {
+                                                mCallback = (DataCommunication) mActivity;
+                                                mCallback.setMyVariableY(id_doctorado);
+                                            } catch (ClassCastException e) {
+                                                throw new ClassCastException(mActivity.toString()
+                                                        + " must implement DataCommunication");
+                                            }
                                         }
                                     });
 
@@ -376,12 +411,14 @@ public class TrayectoriaAcaFragment extends Fragment {
 
                                 }
 
+                                Log.d("CONSULTA","----"+responseP);
 
+                                String carrera = responseP.getString("carr_profesional");
                                 String grado = responseP.getString("grado_academico");
                                 String fechai = responseP.getString("semestre_ingreso");
                                 String fechaf = responseP.getString("semestre_egreso");
 
-
+                                perfilCarrera.setText(carrera);
                                 perfilGrado.setText(grado);
                                 perfilFechaI.setText(fechai);
                                 perfilFechaF.setText(fechaf);

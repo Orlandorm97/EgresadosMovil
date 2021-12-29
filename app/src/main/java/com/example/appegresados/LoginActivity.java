@@ -3,11 +3,14 @@ package com.example.appegresados;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +21,7 @@ import org.json.JSONObject;
 public class LoginActivity extends AppCompatActivity {
     EditText etDni, etPassword;
     Button btnLogin, btnRegister;
+    ImageView logoFacebook, logoYoutube, logoInstagram;
     String dni, password;
     LocalStorage localStorage;
 
@@ -32,20 +36,36 @@ public class LoginActivity extends AppCompatActivity {
         etDni = findViewById(R.id.etDni);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
-        btnRegister = findViewById(R.id.btnRegister);
+        //btnRegister = findViewById(R.id.btnRegister);
 
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(com.example.appegresados.LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
+        ImageView fb = (ImageView) findViewById(R.id.logoFacebook);
+        ImageView yt = (ImageView) findViewById(R.id.logoYoutube);
+        ImageView ig = (ImageView) findViewById(R.id.logoInstagram);
+
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 checkLogin();
+            }
+        });
+
+
+        fb.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                abrirUrl("https://www.facebook.com/untelsperu");
+            }
+        });
+
+        yt.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                abrirUrl("https://www.youtube.com/c/UniversidadNacionalTecnológicadeLimaSur");
+            }
+        });
+
+        ig.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                abrirUrl("https://www.instagram.com/untelsoficial/");
             }
         });
     }
@@ -131,6 +151,17 @@ public class LoginActivity extends AppCompatActivity {
             }
         }).start();
 
+    }
+
+    public void abrirUrl(String url){
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.addCategory(Intent.CATEGORY_BROWSABLE);
+
+        //pass the url to intent data
+        intent.setData(Uri.parse(url));
+
+        startActivity(intent);
     }
 
 

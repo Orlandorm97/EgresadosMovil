@@ -15,11 +15,17 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.appegresados.R;
 
 public class HomeFragment extends Fragment {
-
+    TextView tvhome;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        return null;
+        View v = inflater.inflate(R.layout.fragment_home, container, false);
+
+        tvhome = (TextView) v.findViewById(R.id.text_home);
+
+        tvhome.setText("BIENVENIDO AL SISTEMA DE GESTIÓN DE EGRESADOS");
+
+        return v;
     }
 }

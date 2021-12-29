@@ -23,9 +23,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class DrawerNav extends AppCompatActivity {
+public class DrawerNav extends AppCompatActivity implements DataCommunication{
 
     private AppBarConfiguration mAppBarConfiguration;
+    private String x;
+    private String y;
+    private String z;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +60,7 @@ public class DrawerNav extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_datospro, R.id.nav_trayaca, R.id.nav_traypro, R.id.nav_editdp
+                R.id.nav_home, R.id.nav_datospro, R.id.nav_trayaca, R.id.nav_traypro, R.id.nav_editdp, R.id.nav_trayacaadd, R.id.nav_trayproadd, R.id.nav_trayacaeditmaestria, R.id.nav_trayacaeditdoctorado, R.id.nav_trayproedit
         )
                 .setDrawerLayout(drawer)
                 .build();
@@ -81,6 +84,7 @@ public class DrawerNav extends AppCompatActivity {
                 return true;
             }
         });
+
     }
 
 
@@ -128,4 +132,36 @@ public class DrawerNav extends AppCompatActivity {
 
     }
 
+    @Override
+    public String getMyVariableX(){
+        return x;
+    }
+
+    @Override
+    public void setMyVariableX(String x){
+        //do whatever or just set
+        this.x = x;
+    }
+
+    @Override
+    public String getMyVariableY(){
+        return y;
+    }
+
+    @Override
+    public void setMyVariableY(String y){
+        //do whatever or just set
+        this.y = y;
+    }
+
+    @Override
+    public String getMyVariableZ(){
+        return z;
+    }
+
+    @Override
+    public void setMyVariableZ(String z){
+        //do whatever or just set
+        this.z = z;
+    }
 }

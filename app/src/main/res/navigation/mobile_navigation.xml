@@ -18,10 +18,34 @@
         tools:layout="@layout/fragment_datosper" />
 
     <fragment
+        android:id="@+id/nav_editdp"
+        android:name="com.example.appegresados.ui.DatosPer.DatosPerEditFragment"
+        android:label="@string/menu_trayectoriapro"
+        tools:layout="@layout/fragment_datos_per_edit" />
+
+    <fragment
         android:id="@+id/nav_trayaca"
         android:name="com.example.appegresados.ui.TrayectoriaAca.TrayectoriaAcaFragment"
         android:label="@string/menu_trayectoriaaca"
         tools:layout="@layout/fragment_trayectoriaaca" />
+
+    <fragment
+        android:id="@+id/nav_trayacaadd"
+        android:name="com.example.appegresados.ui.TrayectoriaAca.TrayectoriaAcaAddFragment"
+        android:label="@string/menu_trayectoriaacaadd"
+        tools:layout="@layout/fragment_trayectoria_aca_add" />
+
+    <fragment
+        android:id="@+id/nav_trayacaeditmaestria"
+        android:name="com.example.appegresados.ui.TrayectoriaAca.TrayectoriaAcaEditMaestriaFragment"
+        android:label="@string/menu_trayectoriaacaeditmaestria"
+        tools:layout="@layout/fragment_trayectoria_aca_edit_maestria" />
+
+    <fragment
+        android:id="@+id/nav_trayacaeditdoctorado"
+        android:name="com.example.appegresados.ui.TrayectoriaAca.TrayectoriaAcaEditDoctoradoFragment"
+        android:label="@string/menu_trayectoriaacaeditdoctorado"
+        tools:layout="@layout/fragment_trayectoria_aca_edit_doctorado" />
 
     <fragment
         android:id="@+id/nav_traypro"
@@ -30,8 +54,14 @@
         tools:layout="@layout/fragment_trayectoriapro" />
 
     <fragment
-        android:id="@+id/nav_editdp"
-        android:name="com.example.appegresados.ui.DatosPer.DatosPerEditFragment"
-        android:label="@string/menu_trayectoriapro"
-        tools:layout="@layout/fragment_datos_per_edit" />
+        android:id="@+id/nav_trayproadd"
+        android:name="com.example.appegresados.ui.TrayectoriaPro.TrayectoriaProAddFragment"
+        android:label="@string/menu_trayectoriaproadd"
+        tools:layout="@layout/fragment_trayectoria_pro_add" />
+    <fragment
+        android:id="@+id/nav_trayproedit"
+        android:name="com.example.appegresados.ui.TrayectoriaPro.TrayectoriaProEditFragment"
+        android:label="@string/menu_trayectoriaproedit"
+        tools:layout="@layout/fragment_trayectoria_pro_edit" />
+
 </navigation>

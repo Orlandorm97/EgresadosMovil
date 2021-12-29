@@ -91,7 +91,7 @@ public class DatosPerFragment extends Fragment {
 
 
     private void getUser() {
-        String url = getString(R.string.api_server)+"/user";
+        String url = getString(R.string.api_server)+"/datospersonales";
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -106,35 +106,21 @@ public class DatosPerFragment extends Fragment {
                         Integer code = http.getStatusCode();
                         if(code == 200){
                             try {
-                                JSONArray responseArray = new JSONArray(http.getResponse());
-                                JSONObject response= new JSONObject(responseArray.getString(0));
+                                JSONObject response = new JSONObject(http.getResponse());
+                                JSONArray responseArr =  response.getJSONArray("egresados");
+                                JSONObject responseDP = new JSONObject(responseArr.getString(0));
 
-
-
-                                String ap_paterno = capitalize(response.getString("ap_paterno"));
-                                String ap_materno = capitalize(response.getString("ap_materno"));
-                                String nombres = capitalize(response.getString("nombres"));
-                                String genero = capitalize(response.getString("genero"));
-                                String fecha = response.getString("fecha_nacimiento");
-                                String telefono = response.getString("celular");
-                                String dni = capitalize(response.getString("dni"));
-                                String url = capitalize(response.getString("url"));
+                                String ap_paterno = capitalize(responseDP.getString("ap_paterno"));
+                                String ap_materno = capitalize(responseDP.getString("ap_materno"));
+                                String nombres = capitalize(responseDP.getString("nombres"));
+                                String genero = capitalize(responseDP.getString("genero"));
+                                String fecha = responseDP.getString("fecha_nacimiento");
+                                String telefono = responseDP.getString("celular");
+                                String dni = capitalize(responseDP.getString("dni"));
+                                String url = capitalize(responseDP.getString("url"));
 
 
                                 String nombre_completo = ap_paterno+ " "+ ap_materno+ ", "+ nombres;
-
-
-
-                                File imgFile = new  File("C:/Users/Orlando/Desktop/Egresados/Sprint-I/Login/public/storage/imagenes/subfolder/2016200186/915d865c231e7dbf0ba3e43a67870d7d.jpg");//Your file path
-                                Log.d("Imagen", "*************"+ imgFile);
-
-                                if(imgFile.exists()){
-                                    ImageView myImage = new ImageView(getContext());
-                                    myImage.setImageURI(Uri.fromFile(imgFile));
-
-                                    Log.d("Imagen", "***********");
-                                }
-
 
 
                                 tvName.append(nombre_completo);

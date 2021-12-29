@@ -1,5 +1,7 @@
 package com.example.appegresados.ui.TrayectoriaPro;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -9,28 +11,52 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.example.appegresados.DataCommunication;
 import com.example.appegresados.Http;
 import com.example.appegresados.R;
+import com.example.appegresados.ui.TrayectoriaAca.TrayectoriaAcaAddFragment;
+import com.example.appegresados.ui.TrayectoriaAca.TrayectoriaAcaEditMaestriaFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class TrayectoriaProFragment extends Fragment {
-    TextView perfilGrado, perfilFechaI, perfilFechaF, maestriaCarrera, maestriaGrado, maestriaInstitucion, maestriaPais, maestriaFechaI, maestriaFechaF, doctoradoCarrera, doctoradoGrado, doctoradoInstitucion, doctoradoPais, doctoradoFechaI, doctoradoFechaF;
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mActivity = (Activity) context;
+    }
+    Activity mActivity;
 
+
+    DataCommunication mCallback;
+    TextView perfilGrado, perfilFechaI, perfilFechaF, maestriaCarrera, maestriaGrado, maestriaInstitucion, maestriaPais, maestriaFechaI, maestriaFechaF, doctoradoCarrera, doctoradoGrado, doctoradoInstitucion, doctoradoPais, doctoradoFechaI, doctoradoFechaF;
+    Button bt_agregar;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_trayectoriapro, container, false);
 
         getTrayectoriaPro();
+
+        bt_agregar = (Button) v.findViewById(R.id.bt_agregar);
+
+        bt_agregar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final FragmentTransaction fr = getFragmentManager().beginTransaction();
+                fr.replace(R.id.nav_host_fragment, new TrayectoriaProAddFragment());
+                fr.commit();
+            }
+        });
 
         return v;
     }
@@ -61,12 +87,6 @@ public class TrayectoriaProFragment extends Fragment {
                                 //Log.d("response", "***"+ responseDo);
                                 Log.d("response", "***"+ responseP);
 
-                                /*
-                                LinearLayout2
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"
-                                android:orientation="horizontal">*/
 
                                 LinearLayout linearLayoutM = (LinearLayout) getActivity().findViewById(R.id.linearlayout1);
 
@@ -105,6 +125,9 @@ public class TrayectoriaProFragment extends Fragment {
                                 for( int i = 0; i < countMa; i++)
                                 {
                                     JSONObject responseM = new JSONObject(responseArr1.getString(i));
+
+                                    LinearLayout.LayoutParams lLparamsAll = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1);
+                                    lLparamsAll.setMargins(0,0,0,20);
 
                                     LinearLayout lLAll = new LinearLayout(getContext());
                                     lLAll.setOrientation(LinearLayout.VERTICAL);
@@ -152,8 +175,7 @@ public class TrayectoriaProFragment extends Fragment {
                                     lL10.setLayoutParams(fechafParams);
 
                                     //lL6.setBackground(line);
-
-                                                                        LinearLayout.LayoutParams tvParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1);
+                                    LinearLayout.LayoutParams tvParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1);
                                     tvParams.setMargins(40,0,0,0);
 
                                     TextView tvEmpresa1 = new TextView(getContext());
@@ -163,6 +185,7 @@ public class TrayectoriaProFragment extends Fragment {
                                     tvEmpresa1.setLayoutParams(tvParams);
 
                                     TextView tvEmpresa2 = new TextView(getContext());
+                                    tvEmpresa2.setGravity(Gravity.CENTER_VERTICAL);
                                     tvEmpresa2.setTextColor(Color.parseColor("#000000"));
                                     tvEmpresa2.setLayoutParams(tvParams);
 
@@ -173,6 +196,7 @@ public class TrayectoriaProFragment extends Fragment {
                                     tvActividad1.setLayoutParams(tvParams);
 
                                     TextView tvActividad2 = new TextView(getContext());
+                                    tvActividad2.setGravity(Gravity.CENTER_VERTICAL);
                                     tvActividad2.setTextColor(Color.parseColor("#000000"));
                                     tvActividad2.setLayoutParams(tvParams);
 
@@ -183,6 +207,7 @@ public class TrayectoriaProFragment extends Fragment {
                                     tvPuesto1.setLayoutParams(tvParams);
 
                                     TextView tvPuesto2 = new TextView(getContext());
+                                    tvPuesto2.setGravity(Gravity.CENTER_VERTICAL);
                                     tvPuesto2.setTextColor(Color.parseColor("#000000"));
                                     tvPuesto2.setLayoutParams(tvParams);
 
@@ -193,6 +218,7 @@ public class TrayectoriaProFragment extends Fragment {
                                     tvNivel1.setLayoutParams(tvParams);
 
                                     TextView tvNivel2 = new TextView(getContext());
+                                    tvNivel2.setGravity(Gravity.CENTER_VERTICAL);
                                     tvNivel2.setTextColor(Color.parseColor("#000000"));
                                     tvNivel2.setLayoutParams(tvParams);
 
@@ -203,6 +229,7 @@ public class TrayectoriaProFragment extends Fragment {
                                     tvArea1.setLayoutParams(tvParams);
 
                                     TextView tvArea2 = new TextView(getContext());
+                                    tvArea2.setGravity(Gravity.CENTER_VERTICAL);
                                     tvArea2.setTextColor(Color.parseColor("#000000"));
                                     tvArea2.setLayoutParams(tvParams);
 
@@ -213,6 +240,7 @@ public class TrayectoriaProFragment extends Fragment {
                                     tvSubrea1.setLayoutParams(tvParams);
 
                                     TextView tvSubrea2 = new TextView(getContext());
+                                    tvSubrea2.setGravity(Gravity.CENTER_VERTICAL);
                                     tvSubrea2.setTextColor(Color.parseColor("#000000"));
                                     tvSubrea2.setLayoutParams(tvParams);
 
@@ -223,6 +251,7 @@ public class TrayectoriaProFragment extends Fragment {
                                     tvPais1.setLayoutParams(tvParams);
 
                                     TextView tvPais2 = new TextView(getContext());
+                                    tvPais2.setGravity(Gravity.CENTER_VERTICAL);
                                     tvPais2.setTextColor(Color.parseColor("#000000"));
                                     tvPais2.setLayoutParams(tvParams);
 
@@ -253,10 +282,11 @@ public class TrayectoriaProFragment extends Fragment {
                                     tvRespon1.setLayoutParams(tvParams);
 
                                     TextView tvRespon2 = new TextView(getContext());
+                                    tvRespon2.setGravity(Gravity.CENTER_VERTICAL);
                                     tvRespon2.setTextColor(Color.parseColor("#000000"));
                                     tvRespon2.setLayoutParams(tvParams);
 
-
+                                    String id_profesion = responseM.getString("id_profesion");
                                     tvEmpresa2.setText(responseM.getString("empresa"));
                                     tvActividad2.setText(responseM.getString("actividad_empresa"));
                                     tvPuesto2.setText(responseM.getString("puesto"));
@@ -300,6 +330,25 @@ public class TrayectoriaProFragment extends Fragment {
                                     lLAll.addView(lL8);
                                     lLAll.addView(lL9);
                                     lLAll.addView(lL10);
+
+                                    lLAll.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            // ADD your action here
+                                            FragmentTransaction fr = getFragmentManager().beginTransaction();
+                                            fr.replace(R.id.nav_host_fragment, new TrayectoriaProEditFragment());
+                                            fr.commit();
+
+                                            try {
+                                                mCallback = (DataCommunication) mActivity;
+                                                mCallback.setMyVariableZ(id_profesion);
+                                                Log.d("ID ***** ",""+(id_profesion));
+                                            } catch (ClassCastException e) {
+                                                throw new ClassCastException(mActivity.toString()
+                                                        + " must implement DataCommunication");
+                                            }
+                                        }
+                                    });
 
                                     linearLayoutM.addView(lLAll);
                                 }

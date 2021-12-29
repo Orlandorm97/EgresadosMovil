@@ -12,7 +12,13 @@
     <string name="menu_home">Home</string>
     <string name="menu_datosper">Datos Personales</string>
     <string name="menu_trayectoriaaca">Trayectoria Académica</string>
+    <string name="menu_trayectoriaacaadd">Trayectoria Académica Agregar</string>
+    <string name="menu_trayectoriaacaeditmaestria">Editar Maestria</string>
+    <string name="menu_trayectoriaacaeditdoctorado">Editar Doctorado</string>
     <string name="menu_trayectoriapro">Trayectoria Profesional</string>
+    <string name="menu_trayectoriaproadd">Trayectoria Profesional Agregar</string>
+    <string name="menu_trayectoriaproedit">Trayectoria Profesional Editar</string>
+
     <string name="salir">Salir</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
